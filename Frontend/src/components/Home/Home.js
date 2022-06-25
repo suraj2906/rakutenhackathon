@@ -45,8 +45,7 @@ const Home = () => {
             <Header/>
             <div className="home__section h-[91vh] overflow-hidden pt-3">
 
-                {/*{!user && <Navigate replace to="/"/>}*/}
-                {/*<div className="flex h-56 bg-[#000000] text-white">fnsjkfjksnjksff</div>*/}
+
                 <div className="flex">
                     <div className="flex flex-col gap-5">
                         <Card className="card py-6 ml-5 w-[20rem]">
