@@ -9,22 +9,13 @@ import {PieChart, Pie, Legend, ResponsiveContainer, Cell} from "recharts";
 
 const Dashboard = () => {
     const data = [
-        {name: 'Geeksforgeeks', students: 400},
-        {name: 'Technical scripter', students: 700},
-        {name: 'Geek-i-knack', students: 200},
-        {name: 'Geek-o-mania', students: 1000}
+        {name: 'Geeksforgeeks', students: 400, fill: 'yellow' },
+        {name: 'Technical scripter', students: 700, fill: 'green' },
+        {name: 'Geek-i-knack', students: 200, fill: 'red' },
+        {name: 'Geek-o-mania', students: 1000, fill: 'blue' }
     ];
 
-    const testMeasurments = [
-        {
-            data: [
-                {name: "glucose", value: 6, color: '#57c0e8'},
-                {name: "SpO2", value: 5, color: "#FF6565"},
-                {name: "Blood Pressure", value: 4, color: "#FFDA83"},
-                {name: "Body Weight", value: 2, color: "purple"}
-            ]
-        }
-    ];
+
 
 
     return (
@@ -75,7 +66,7 @@ const Dashboard = () => {
                             <ResponsiveContainer width={700} height="80%">
                                 <PieChart width={500} height={500}>
                                     <Legend verticalAlign="bottom" align="center"/>
-                                    <Pie data={data} dataKey="students" outerRadius={250} fill="green"/>
+                                    <Pie data={data} dataKey="students" outerRadius={250}/>
                                 </PieChart>
                             </ResponsiveContainer>
                         </div>
