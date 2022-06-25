@@ -41,8 +41,13 @@ def getCuriousProfiles():
             last_height = 0
             # Calculate new scroll height and compare with last scroll height
             new_height = driver.execute_script("return document.body.scrollHeight")
-            if new_height == last_height:
-                print("reached page end")
+            maindiv = driver.find_element(By.ID, "mainContent")
+            divs = maindiv.find_elements(By.CLASS_NAME,"q-box")
+            soup = BeautifulSoup(maindiv.get_attribute("innerHTML"), "html.parser")
+            innerdiv = soup.find_all("div", class_="qu-borderBottom")[-1]
+            questiondiv = innerdiv.next_sibling
+            questiondiv.find("div", class_="q-box")
+            print(questiondiv.get("innerHTML"))
             last_height = new_height
             counter+=2000
 
