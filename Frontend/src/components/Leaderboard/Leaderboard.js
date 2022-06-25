@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Leaderboard.css";
 
 const Leaderboard = () => {
+  const [leaderboard, setLeaderBoard] = useState(null);
+  useEffect(()=>{
+    fetch("http://127.0.0.1:8000/api/getLeaderboard")
+    .then(res=>res.json())
+    .then(res=>setLeaderBoard(res.data))
+  }, [])
   return (
     <div class="leaderboard">
       <h1>
@@ -11,26 +17,12 @@ const Leaderboard = () => {
         Most active Players
       </h1>
       <ol>
+        {leaderboard && leaderboard.map(val=>(
         <li>
-          <mark>Jerry Wood</mark>
-          <small>315</small>
+          <mark>{val.first_name+ " "+val.last_name}</mark>
+          <small>{val.reward}</small>
         </li>
-        <li>
-          <mark>Brandon Barnes</mark>
-          <small>301</small>
-        </li>
-        <li>
-          <mark>Raymond Knight</mark>
-          <small>292</small>
-        </li>
-        <li>
-          <mark>Trevor McCormick</mark>
-          <small>245</small>
-        </li>
-        <li>
-          <mark>Andrew Fox</mark>
-          <small>203</small>
-        </li>
+        ))}
       </ol>
     </div>
   );
