@@ -35,7 +35,9 @@ const Home = () => {
         }).then(val=>setMessage(""))
     }
     useEffect(()=>{
-        fetch("http://127.0.0.1/api/getUsers/lifeinsurace")
+        fetch("http://127.0.0.1:8000/api/getUsers/finance")
+        .then(res=>res.json())
+        .then(res=>setProfiles(res.data))
     }, [profiles])
     useEffect(()=>{
         const unsubscribe = onSnapshot(q, snapshot=>{
@@ -59,12 +61,14 @@ const Home = () => {
                     </span>
                             <hr/>
                             <div className="h-[20vh] flex-grow overflow-y-scroll">
-                                <Profile type="square" name="dude 1"/>
-                                <Profile type="square" name="dude 2"/>
+                                {profiles && profiles.map(val=>(
+                                    <Profile type="square" name={val.first_name+" "+val.last_name}/>
+                                ))}
+                                {/* <Profile type="square" name="dude 2"/>
                                 <Profile type="square" name="dude 3"/>
                                 <Profile type="square" name="dude 4"/>
                                 <Profile type="square" name="dude 4"/>
-                                <Profile type="square" name="dude 4"/>
+                                <Profile type="square" name="dude 4"/> */}
                             </div>
                         </Card>
 
@@ -74,16 +78,14 @@ const Home = () => {
                     </span>
                             <hr/>
                             <div className="h-[42vh] flex-grow overflow-y-scroll">
-                                <Profile type="rounded-full" name="Circle 1"/>
-                                <Profile type="rounded-full" name="Circle 2"/>
-                                <Profile type="rounded-full" name="Circle 3"/>
-                                <Profile type="rounded-full" name="Circle 4"/>
-                                <Profile type="rounded-full" name="Circle 5"/>
-                                <Profile type="rounded-full" name="Circle 6"/>
-                                <Profile type="rounded-full" name="Circle 7"/>
-                                <Profile type="rounded-full" name="Circle 7"/>
-                                <Profile type="rounded-full" name="Circle 7"/>
-                                <Profile type="rounded-full" name="Circle 7"/>
+                                <Profile type="rounded-full" name="Life Insurance"/>
+                                <Profile type="rounded-full" name="Health Insurance"/>
+                                <Profile type="rounded-full" name="Automobile Insurance"/>
+                                <Profile type="rounded-full" name="Home Insurance"/>
+                                <Profile type="rounded-full" name="Travel Insurance"/>
+                                <Profile type="rounded-full" name="Home Loan"/>
+                                <Profile type="rounded-full" name="Car Loan"/>
+                                <Profile type="rounded-full" name="EMI"/>
                             </div>
 
                             {/*for displaying through firebase*/}
