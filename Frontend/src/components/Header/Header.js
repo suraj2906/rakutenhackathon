@@ -25,7 +25,7 @@ const Header = () => {
     };
 
     return (
-        <header className="flex bg-[#DCF9FD] items-center justify-between py-4 px-6 mb-1 w-screen">
+            <header className="flex bg-[#DCF9FD] items-center justify-between py-4 px-6 mb-1 w-screen">
             <a href="/">
                 <img
                     src={require("../Assets/MetaData.png")}
@@ -36,7 +36,7 @@ const Header = () => {
             <div className="hidden flex lg:flex space-x-6">
                 <a href="/" className="navbar__link">Home</a>
                 <a href="/" className="navbar__link">Community</a>
-                <a href="/" className="navbar__link">Notifications</a>
+                <a href="/" className="navbar__link">Contact</a>
             </div>
             <div className="flex space-x-4">
                 <button
