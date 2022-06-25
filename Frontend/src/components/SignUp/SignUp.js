@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Card from "../UI/Card/Card";
 import Button from "../UI/Button/Button";
 import './SignUp.css'
+import axios from 'axios';
 
 const SignUp = () => {
 
@@ -14,7 +15,16 @@ const SignUp = () => {
     })
 
     function handleSubmit(){
-        console.log(userdetails);
+        fetch("http://localhost:8000/api/newUser/",
+        {
+            method: "POST",
+            body:JSON.stringify({
+                ...userdetails,
+            "interests": [
+                "finance", "loans"
+            ]
+        })
+        }).then(res=>console.log(res.status))
     }
 
     return (
