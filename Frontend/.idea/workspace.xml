@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4a962493-4f96-433a-b317-7c47be1671ff" name="Changes" comment="" />
+    <list default="true" id="95f7319a-4b2d-48ff-991e-fc3d962b952b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/app/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Homepage/Homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Homepage/Homepage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/Profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UI/CommCard/CommCard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/CommCard/CommCard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UI/CommCard/CommCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/CommCard/CommCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/firebase.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/firebase.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="2B3jVed6jtoGWhNdyFHZj48LUTQ" />
+  <component name="ProjectId" id="2AjoDSNc68qhsuOKJHNEFeBkx8R" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -20,22 +28,51 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="D:\Abhay_Arora\JetBrains\WebStorm 2021.2.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Abhay Arora\Desktop\Bajaj project\metadata\src" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="4a962493-4f96-433a-b317-7c47be1671ff" name="Changes" comment="" />
-      <created>1656141695400</created>
+      <changelist id="95f7319a-4b2d-48ff-991e-fc3d962b952b" name="Changes" comment="" />
+      <created>1655532264917</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1656141695400</updated>
-      <workItem from="1656141697876" duration="897000" />
+      <updated>1655532264917</updated>
+      <workItem from="1655532270448" duration="11408000" />
+      <workItem from="1655572907168" duration="17715000" />
+      <workItem from="1655610419328" duration="14218000" />
+      <workItem from="1655636587744" duration="2921000" />
+      <workItem from="1655662775438" duration="7230000" />
+      <workItem from="1655727559431" duration="13823000" />
+      <workItem from="1655998702862" duration="3121000" />
+      <workItem from="1656093566901" duration="5065000" />
+      <workItem from="1656131586514" duration="5629000" />
+      <workItem from="1656146779854" duration="3517000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
