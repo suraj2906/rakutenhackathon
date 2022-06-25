@@ -3,6 +3,7 @@ import Header from "../Header/Header";
 import Card from "../UI/Card/Card";
 import './Options.css';
 import Button from "../UI/Button/Button";
+import {CheckIcon, TicketIcon} from "@heroicons/react/outline";
 
 const Options = () => {
     return (
@@ -16,13 +17,13 @@ const Options = () => {
                             Become an existing customer/influencer
                         </span>
                             <hr className="my-3 w-[25%] border-2 border-black"/>
-                            <p className="text-left font-[Montserrat] font-[300] text-[20px]">Explain here what will
-                                have to
-                                be done by it, what are the advantages of it and all that! Explain here what will have
-                                to be
-                                done by it, what are the advantages of it and all that! Explain here what will have to
-                                be
-                                done by it, what are the advantages of it and a!</p>
+                            <p className="text-left font-[Montserrat] font-[300] text-[20px]">
+                                <ul>
+                                    <li><CheckIcon className="h-8 mx-3 inline"/>Verify yourself as an existing customer of any insurance category</li>
+                                    <li><CheckIcon className="h-8 mx-3 inline"/>Contribute to our webapp by converting leads to customers , collaborate with leads , boost brand performance</li>
+                                    <li><CheckIcon className="h-8 mx-3 inline"/>Stand a chance to win exciting prizes (unlike zbc) , amazon gift codes and bajaj finserv goodies.</li>
+                                </ul>
+                            </p>
                         </Card>
                     </a>
                 </div>
@@ -33,13 +34,11 @@ const Options = () => {
                             Browse other Bajaj products
                         </span>
                             <hr className="my-3 w-[25%] border-2 border-black"/>
-                            <p className="text-left font-[Montserrat] font-[300] text-[20px]">Explain here what will
-                                have to
-                                be done by it, what are the advantages of it and all that! Explain here what will have
-                                to be
-                                done by it, what are the advantages of it and all that! Explain here what will have to
-                                be
-                                done by it, what are the advantages of it and a!</p>
+                            <p className="text-left font-[Montserrat] font-[300] text-[20px]">
+                                <ul>
+                                    <li><CheckIcon className="h-8 mx-3 inline"/>Browse through the exciting range of products offered by Bajaj Finserv and stand a chance to avail special discounts available only here</li>
+                                </ul>
+                            </p>
                         </Card>
                     </a>
                 </div>
