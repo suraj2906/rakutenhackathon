@@ -5,23 +5,49 @@ import Profile from "../Profile/Profile";
 import Banner from "../UI/Banner/Banner";
 import {PaperAirplaneIcon, PaperClipIcon} from "@heroicons/react/outline";
 import './Dashboard.css';
-import {PieChart, Pie, Legend, ResponsiveContainer, Cell} from "recharts";
+import {PieChart, Pie, Legend, ResponsiveContainer,BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Bar, Cell} from "recharts";
 
 const Dashboard = () => {
+    const sentiments = [
+        {name: 'Possitive', students: 400, fill: 'green' },
+        {name: 'Negative', students: 700, fill: 'red' },
+    ]
+
     const data = [
-        {name: 'Geeksforgeeks', students: 400, fill: 'yellow' },
-        {name: 'Technical scripter', students: 700, fill: 'green' },
-        {name: 'Geek-i-knack', students: 200, fill: 'red' },
-        {name: 'Geek-o-mania', students: 1000, fill: 'blue' }
+        {name: 'Life Insurance', students: 400, fill: '#D61C4E' },
+        {name: 'Health Insurance', students: 700, fill: '#F77E21' },
+        {name: 'Automobile Insurance', students: 200, fill: '#FAC213' },
+        {name: 'Home Insurance', students: 1000, fill: '#A64B2A' }
     ];
 
-
+    const segregatedData = [
+        {
+          "name": "Life Insurance",
+          "possitive": 4000,
+          "negative": 2400
+        },
+        {
+          "name": "Home Insurance",
+          "possitive": 3000,
+          "negative": 1398
+        },
+        {
+          "name": "Automobile Insurance",
+          "possitive": 2000,
+          "negative": 9800
+        },
+        {
+          "name": "Health Insurance",
+          "possitive": 2780,
+          "negative": 3908
+        }
+      ]
 
 
     return (
         <div>
             <Header/>
-            <div className="home__section h-[91vh] overflow-hidden px-10 py-5">
+            <div className="home__section overflow-hidden px-10 py-5">
                 <span className="dashboard-heading__main px-5">Dashboard</span>
                 <div className="flex">
                     <div className="flex flex-col gap-5">
@@ -66,7 +92,7 @@ const Dashboard = () => {
                             <ResponsiveContainer width={700} height="80%">
                                 <PieChart width={500} height={500}>
                                     <Legend verticalAlign="bottom" align="center"/>
-                                    <Pie data={data} dataKey="students" outerRadius={250}/>
+                                    <Pie data={sentiments} dataKey="students" outerRadius={250}/>
                                 </PieChart>
                             </ResponsiveContainer>
                         </div>
@@ -85,6 +111,21 @@ const Dashboard = () => {
 
 
             </div>
+                    <div className="block flex flex-grow px-5 justify-evenly my-5 ">
+
+                        <div>
+                            <span className="block dashboard-heading__chart px-5 text-center">Segregagted Sentiments</span>
+                            <BarChart width={1200} height={500} data={segregatedData}>
+                                <CartesianGrid strokeDasharray="3 3" />
+                                <XAxis dataKey="name" />
+                                <YAxis />
+                                <Tooltip />
+                                <Legend />
+                                <Bar dataKey="negative" fill="#F15412" />
+                                <Bar dataKey="possitive" fill="#A0D995" />
+                            </BarChart>
+                        </div>
+                    </div>
         </div>
     );
 };
