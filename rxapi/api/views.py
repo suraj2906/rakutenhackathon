@@ -326,3 +326,17 @@ def getLeaderboard(request):
         "status": "success",
         "data": toppersList
     })
+
+def getUsers(request, category):
+    members = database.child("users").get()
+    leads = []
+    for member in members:
+        data = member.val()
+        print(data)
+        for interest in data["favourites"]:
+            if interest in category:
+                leads.append(data)
+    return JsonResponse({
+        "status": "success",
+        "data": leads
+    }, safe=False)

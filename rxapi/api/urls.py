@@ -9,5 +9,7 @@ urlpatterns = [
     path("updateUser/", views.updateUser),
     path("getTwitterSentiments/<str:category>", views.getSentimentResponse),
 
-    path("getLeaderboard/", views.getLeaderboard)
+    path("getLeaderboard/", views.getLeaderboard),
+
+    path("getUsers/<str:category>", views.getUsers)
 ]
