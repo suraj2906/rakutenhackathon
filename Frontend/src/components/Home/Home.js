@@ -25,6 +25,7 @@ const Home = () => {
     const q = query(collection(db, "message/user1/user2"));
     const [message, setMessage] = useState("")
     const [messages, setMessages] = useState(null);
+    const [profiles, setProfiles] = useState(null);
     function handleSubmit(){
         addDoc(q, {
             text: message,
@@ -33,6 +34,9 @@ const Home = () => {
             createdAt: new Date()
         }).then(val=>setMessage(""))
     }
+    useEffect(()=>{
+        fetch("http://127.0.0.1/api/getUsers/lifeinsurace")
+    }, [profiles])
     useEffect(()=>{
         const unsubscribe = onSnapshot(q, snapshot=>{
             setMessages(snapshot.docs.map(data =>data.data()));
