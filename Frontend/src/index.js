@@ -12,6 +12,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Homepage from "./components/Homepage/Homepage";
 import SignUp from "./components/SignUp/SignUp";
 import VerificationPage from "./components/VerificationPage/VerificationPage";
+import Options from "./components/Options/Options";
+import Dashboard from "./components/Dashboard/Dashboard";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -25,6 +27,8 @@ root.render(
         <Route exact path="/signup" element={<SignUp />} />
         <Route exact path="/leaderboard" element={<Leaderboard />} />
         <Route exact path="/verify" element={<VerificationPage />} />
+        <Route exact path="/options" element={<Options />} />
+        <Route exact path="/dashboard" element={<Dashboard />} />
         <Route exact path="/channels/:id" element={<Home />} />
       </Routes>
     </Provider>

@@ -1,0 +1,13 @@
+.dashboard-heading__main{
+    font-family: 'Space Grotesk';
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 119.1%;
+}
+
+.dashboard-heading__chart{
+    font-family: 'poppins';
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 119.1%;
+}
