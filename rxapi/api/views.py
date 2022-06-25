@@ -70,33 +70,36 @@ def storeUser(request):
     if request.method == "POST":
         data = json.loads(request.body);
         # print(data)
-        username = data.get("username")
         first_name = data.get("first_name")
         last_name = data.get("last_name")
-        age = data.get("age")
+        # age = data.get("age")
         favourites = data.get("interests")
-        social_instagram = data.get("instagram")
+        # social_instagram = data.get("instagram")
         social_twitter = data.get("twitter")
-        social_whatsapp = data.get("whatsapp")
+        # social_whatsapp = data.get("whatsapp")
+        email = data.get("email")
         print({
-            "username": username,
+            "username": first_name+last_name,
             "first_name": first_name,
             "last_name": last_name,
-            "age": age,
+            "email": email,
+            # "age": age,
             "favourites": favourites,
-            "social_instagram": social_instagram,
+            "reward_points": 0,
+            # "social_instagram": social_instagram,
             "social_twitter": social_twitter,
-            "social_whatsapp": social_whatsapp,
+            # "social_whatsapp": social_whatsapp,
         })
-        database.child("users").child(username).set({
-            "username": username,
+        database.child("users").child(first_name+last_name).set({
+            "username": first_name+last_name,
             "first_name": first_name,
             "last_name": last_name,
-            "age": age,
+            "email": email,
+            # "age": age,
             "favourites": favourites,
-            "social_instagram": social_instagram,
+            # "social_instagram": social_instagram,
             "social_twitter": social_twitter,
-            "social_whatsapp": social_whatsapp,
+            # "social_whatsapp": social_whatsapp,
         })
         return JsonResponse({
             "status": "success",
