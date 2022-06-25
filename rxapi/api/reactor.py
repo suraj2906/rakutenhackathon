@@ -373,4 +373,4 @@ def getSentiments(dataList):
 
     # df_neg.to_csv('/drive/My Drive/HACKRX/final_list_neg.csv')
     return answers
-getSentiments(data)
+# getSentiments(data)
