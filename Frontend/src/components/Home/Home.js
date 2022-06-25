@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Home.css';
 import {auth, db} from "../../firebase";
 import {Navigate} from "react-router-dom";
@@ -14,45 +14,31 @@ import Banner from "../UI/Banner/Banner";
 import Chat from "../Chat/Chat";
 import {PaperAirplaneIcon, PaperClipIcon} from "@heroicons/react/outline";
 import { useRef } from "react";
+import { addDoc, collection, query } from 'firebase/firestore/lite';
+import { doc, getDocs, onSnapshot } from 'firebase/firestore';
 
 const Home = () => {
     // const [user] = useAuthState(auth);
     // // for displaying through firebase
     // const channelId = useSelector(selectChannelId);
     // const channelName = useSelector(selectChannelName);
-    const inputRef = useRef("");
-    const chatRef = useRef(null);
-    // const [messages] = useCollection(
-    //     channelId &&
-    //     db
-    //         .collection("channels")
-    //         .doc(channelId)
-    //         .collection("messages")
-    //         .orderBy("timestamp", "asc")
-    // );
-    //
-    // const scrollToBottom = () => {
-    //     chatRef.current.scrollIntoView({
-    //         behavior: "smooth",
-    //         block: "start",
-    //     });
-    // };
-    //
-    // const sendMessage = (e) => {
-    //     e.preventDefault();
-    //     if (inputRef.current.value !== "") {
-    //         console.log(inputRef.current.value);
-    //         db.collection("channels").doc(channelId).collection("messages").add({
-    //             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-    //             message: inputRef.current.value,
-    //             name: user?.displayName,
-    //             photoURL: user?.photoURL,
-    //             email: user?.email,
-    //         });
-    //     };
-    //     inputRef.current.value = "";
-    //     // scrollToBottom();
-    // }
+    const q = query(collection(db, "message/user1/user2"));
+    const [message, setMessage] = useState("")
+    const [messages, setMessages] = useState(null);
+    function handleSubmit(){
+        addDoc(q, {
+            text: message,
+            sender: "user1",
+            receiver: "user2",
+            createdAt: new Date()
+        }).then(val=>setMessage(""))
+    }
+    useEffect(()=>{
+        const unsubscribe = onSnapshot(q, snapshot=>{
+            setMessages(snapshot.docs.map(data =>data.data()));
+            // console.log(snapshot.docs[0].data())
+        })
+    }, [])
 
     return (
         <>
@@ -119,37 +105,18 @@ const Home = () => {
                                     <div className="flex items-center chat__input w-full">
                                         <input type="text" placeholder="Search"
                                                className="focus:outline-none w-full bg-transparent p-4"
-                                               ref={inputRef}
+                                               value={message} onChange={(e)=>setMessage(e.target.value)}
                                         />
-                                        <button type="submit">
+                                        <button type="submit" onClick={handleSubmit}>
                                             <PaperAirplaneIcon className="h-10 text-[#72767d] mr-1 rotate-90"/>
                                         </button>
 
                                     </div>
                                 </div>
                             <div className="flex flex-col gap-2">
-                                <Chat text="adsjkbakbdka" isUser={true}/>
-                                <Chat text="asndhjbashdak"/>
-                                <Chat text="asndhjbashdak"/>
-                                <Chat text="asndhjbashdak"/>
-
-                                <Chat
-                                    text="adsjkbakbdka Instructions & Short Description about the circle- Lorem ipsum dolor sit amet, consectetur adipiscing elit. In est dolor, tempus nec augue nec, mattis venenatis mauris. Aliquam erat volutpat. Nam eget velit eget leo porta facilisis. Vivamus bibendum diam lorem. Phasellus justo nisl, faucibus et neque vitae, auctor ullamcorper dui. Fusce tempor tellus ipsum, id hendrerit justo ultricies nec. Nunc vitae massa vitae leo lacinia commodo. Cras id malesuada neque, sit amet ornare eros. Integer auctor ipsum mi, eu venenatis tellus congue in. Duis dapibus nulla sed urna vulputate, id vehicula orci congue."
-                                    isUser={true}/>
-
-                                <Chat text="adsjkbakbdka" isUser={true}/>
-
-                                <Chat text="adsjkbakbdka" isUser={true}/>
-                                <Chat text="asndhjbashdak"/>
-                                <Chat
-                                    text="Instructions & Short Description about the circle- Lorem ipsum dolor sit amet, consectetur adipiscing elit. In est dolor, tempus nec augue nec, mattis venenatis mauris. Aliquam erat volutpat. Nam eget velit eget leo porta facilisis. Vivamus bibendum diam lorem. Phasellus justo nisl, faucibus et neque vitae, auctor ullamcorper dui. Fusce tempor tellus ipsum, id hendrerit justo ultricies nec. Nunc vitae massa vitae leo lacinia commodo. Cras id malesuada neque, sit amet ornare eros. Integer auctor ipsum mi, eu venenatis tellus congue in. Duis dapibus nulla sed urna vulputate, id vehicula orci congue."/>
-
-
-                                <Chat
-                                    text="Instructions & Short Description about the circle- Lorem ipsum dolor sit amet, consectetur adipiscing elit. In est dolor, tempus nec augue nec, mattis venenatis mauris. Aliquam erat volutpat. Nam eget velit eget leo porta facilisis. Vivamus bibendum diam lorem. Phasellus justo nisl, faucibus et neque vitae, auctor ullamcorper dui. Fusce tempor tellus ipsum, id hendrerit justo ultricies nec. Nunc vitae massa vitae leo lacinia commodo. Cras id malesuada neque, sit amet ornare eros. Integer auctor ipsum mi, eu venenatis tellus congue in. Duis dapibus nulla sed urna vulputate, id vehicula orci congue."
-                                    isUser={true}/>
-
-
+                                {messages != null && messages.map(({text, sender})=>(
+                                        <Chat text={text} isUser={"user1" == sender}/>
+                                ))}
                             </div>
                         </Card>
                     </div>
