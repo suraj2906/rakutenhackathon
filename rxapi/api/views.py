@@ -21,7 +21,7 @@ def getSentiments(dataList):
         sentiment_dict = obj.polarity_scores(data['text'])
         if sentiment_dict['compound'] > 0.3:
             sentiment_dict['sentiment'] = "possitive"
-        elif sentiment_dict['compound'] < 0.3:
+        elif sentiment_dict['compound'] < -0.3:
             sentiment_dict['sentiment'] = "negative"
         else:
             sentiment_dict['sentiment'] = "neutral"
@@ -102,6 +102,11 @@ def storeUser(request):
         social_twitter = data.get("twitter")
         # social_whatsapp = data.get("whatsapp")
         email = data.get("email")
+        reward = 0
+        if(email != ""):
+            reward+= 200
+        if(social_twitter != ""):
+            reward+= 300
         print({
             "username": first_name+last_name,
             "first_name": first_name,
@@ -123,6 +128,7 @@ def storeUser(request):
             "favourites": favourites,
             # "social_instagram": social_instagram,
             "social_twitter": social_twitter,
+            "reward": reward
             # "social_whatsapp": social_whatsapp,
         })
         return JsonResponse({
@@ -298,10 +304,25 @@ def getTotalMembers(request):
  # ---------------------------------------------------------------------------- #
  #                              Sentiment Analysis                              #
  # ----------------------------------------------------------------------------
-def getSentimentResponse(request):
-    url = "http://localhost:8000/api/getTweets/insurance"
+def getSentimentResponse(request, category):
+    url = "http://localhost:8000/api/getTweets/"+category
     response = requests.get(url)
     data = response.json()
     sentiments = getSentiments(data)
     print(sentiments)
     return JsonResponse(getSentiments(data), safe=False)
+
+
+# ---------------------------------------------------------------------------- #
+#                                 Reward System                                #
+# ---------------------------------------------------------------------------- #
+def getLeaderboard(request):
+    top10 = database.child("users").get()
+    toppersList = []
+    for member in top10:
+        toppersList.append(member.val())
+    toppersList = sorted(toppersList, key=lambda x: x["reward"], reverse=True)
+    return JsonResponse({
+        "status": "success",
+        "data": toppersList
+    })
