@@ -1,9 +1,32 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Card from "../UI/Card/Card";
 import Button from "../UI/Button/Button";
 import './SignUp.css'
+import axios from 'axios';
 
 const SignUp = () => {
+
+    const [userdetails, setUserDetails] = useState({
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "twitter": "",
+        "password": "",
+    })
+
+    function handleSubmit(){
+        fetch("http://localhost:8000/api/newUser/",
+        {
+            method: "POST",
+            body:JSON.stringify({
+                ...userdetails,
+            "interests": [
+                "finance", "loans"
+            ]
+        })
+        }).then(res=>console.log(res.status))
+    }
+
     return (
         <>
             <div className="signup-page">
@@ -13,7 +36,7 @@ const SignUp = () => {
 
                     </div>
                     <div className="flex-col">
-                        <div className="flex flex-col justify-center w-[100vh] h-[100vh] py-10 px-[15%] signup__box text-center ">
+                        <div className="flex flex-col w-[100vh] px-[15%] signup__box text-center ">
 
 
                                 <h1 className="signup-heading">MetaData</h1>
@@ -24,27 +47,63 @@ const SignUp = () => {
                                 <p className="text-left font-[Montserrat] font-[300] text-[20px]">Welcome onboard with
                                     us!</p>
                                 <form className="flex-col gap-[40px] justify-between mt-10">
-                                    <p className="text-left font-[Montserrat] mt-4 mb-2 font-[400]">Username</p>
+                                    <p className="text-left font-[Montserrat] mt-3 mb-2 font-[400]">firstname</p>
                                     <input
-                                        className="signup__input text-left px-4 py-2 w-full text-[20px] placeholder:font-[Montserrat] font-[500] font-[15px] focus:outline-none"
+                                        className="signup__input text-left px-4 py-1 w-full text-[20px] placeholder:font-[Montserrat] font-[500] font-[15px] focus:outline-none"
                                         placeholder="Enter your username"
+                                            value={userdetails.first_name}
+                                            onChange={(e)=>setUserDetails({
+                                                ...userdetails,
+                                                [e.target.name]: e.target.value
+                                            })}
                                         type="text"
-                                        name="username"/>
-                                    <p className="text-left font-[Montserrat] mt-4 mb-2 font-[400]">Email</p>
+                                        name="first_name"/>
+                                    <p className="text-left font-[Montserrat] mt-3 mb-2 font-[400]">lastname</p>
                                     <input
-                                        className="signup__input text-left px-4 py-2 w-full text-[20px] placeholder:font-[Montserrat] font-[500] font-[15px] focus:outline-none"
+                                        className="signup__input text-left px-4 py-1 w-full text-[20px] placeholder:font-[Montserrat] font-[500] font-[15px] focus:outline-none"
+                                        placeholder="Enter your username"
+                                        value={userdetails.last_name}
+                                        onChange={(e)=>setUserDetails({
+                                            ...userdetails,
+                                            [e.target.name]: e.target.value
+                                        })}
+                                        type="text"
+                                        name="last_name"/>
+                                    <p className="text-left font-[Montserrat] mt-3 mb-2 font-[400]">Email</p>
+                                    <input
+                                        className="signup__input text-left px-4 py-1 w-full text-[20px] placeholder:font-[Montserrat] font-[500] font-[15px] focus:outline-none"
                                         placeholder="Enter your email"
+                                        value={userdetails.email}
+                                        onChange={(e)=>setUserDetails({
+                                            ...userdetails,
+                                            [e.target.name]: e.target.value
+                                        })}
                                         type="email"
                                         name="email"/>
-                                    <p className="text-left font-[Montserrat] mt-4 mb-2 font-[400]">Password</p>
+                                    <p className="text-left font-[Montserrat] mt-3 mb-2 font-[400]">Twitter</p>
+                                    <input
+                                        className="signup__input text-left px-4 py-1 w-full text-[20px] placeholder:font-[Montserrat] font-[500] font-[15px] focus:outline-none"
+                                        placeholder="Enter your username"
+                                        value={userdetails.twitter}
+                                            onChange={(e)=>setUserDetails({
+                                                ...userdetails,
+                                                [e.target.name]: e.target.value
+                                            })}
+                                        type="text"
+                                        name="twitter"/>
+                                    <p className="text-left font-[Montserrat] mt-3 mb-2 font-[400]">Password</p>
                                     <input
                                         className="signup__input text-left px-4 py-2 w-full text-[20px] placeholder:font-[Montserrat] font-[500] font-[15px] focus:outline-none"
                                         placeholder="Enter your username"
+                                        value={userdetails.password}
+                                        onChange={(e)=>setUserDetails({
+                                            ...userdetails,
+                                            [e.target.name]: e.target.value
+                                        })}
                                         type="password"
                                         name="password"/>
 
-                                    <Button className="w-full my-10">Signup</Button>
-
+                                    <Button onClick={handleSubmit} className="w-full my-10">Signup</Button>
                                 </form>
 
                         </div>
