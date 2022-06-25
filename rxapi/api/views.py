@@ -6,6 +6,27 @@ import datetime
 import pyrebase
 from django.views.decorators.csrf import csrf_exempt
 import json
+# from .reactor import getSentiments
+
+
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+from textblob import TextBlob
+
+# HelperFunctions
+def getSentiments(dataList):
+    answers = []
+    for data in dataList:
+        analysis=TextBlob(data['text'])
+        obj = SentimentIntensityAnalyzer()
+        sentiment_dict = obj.polarity_scores(data['text'])
+        if sentiment_dict['compound'] > 0.3:
+            sentiment_dict['sentiment'] = "possitive"
+        elif sentiment_dict['compound'] < 0.3:
+            sentiment_dict['sentiment'] = "negative"
+        else:
+            sentiment_dict['sentiment'] = "neutral"
+        answers.append(sentiment_dict)
+    return answers
 # Create your views here.
 
 firebaseConfig = {
@@ -273,8 +294,14 @@ def getTotalMembers(request):
 # ---------------------------------------------------------------------------- #
 #                                public post api                               #
 # ---------------------------------------------------------------------------- #
-
-
-# ---------------------------------------------------------------------------- #
-#                                   Messages                                   #
-# ---------------------------------------------------------------------------- #
+ 
+ # ---------------------------------------------------------------------------- #
+ #                              Sentiment Analysis                              #
+ # ----------------------------------------------------------------------------
+def getSentimentResponse(request):
+    url = "http://localhost:8000/api/getTweets/insurance"
+    response = requests.get(url)
+    data = response.json()
+    sentiments = getSentiments(data)
+    print(sentiments)
+    return JsonResponse(getSentiments(data), safe=False)

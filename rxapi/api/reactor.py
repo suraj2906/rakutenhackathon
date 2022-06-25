@@ -308,9 +308,9 @@ data = [
   }
 ]
 
-answers = []
 
 def getSentiments(dataList):
+    answers = []
     for data in dataList:
         analysis=TextBlob(data['text'])
         obj = SentimentIntensityAnalyzer()
@@ -373,4 +373,4 @@ def getSentiments(dataList):
 
     # df_neg.to_csv('/drive/My Drive/HACKRX/final_list_neg.csv')
     return answers
-# getSentiments(data)
+print(getSentiments(data))

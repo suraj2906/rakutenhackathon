@@ -6,5 +6,6 @@ urlpatterns = [
     path("getTwitterUser/<str:id>", views.getTwitterUser),
     path("newUser/", views.storeUser),
     path("getUser/", views.getUserDetails),
-    path("updateUser/", views.updateUser)
+    path("updateUser/", views.updateUser),
+    path("getTwitterSentiments/", views.getSentimentResponse)
 ]
