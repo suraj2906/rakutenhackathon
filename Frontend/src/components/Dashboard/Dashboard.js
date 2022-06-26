@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from "../Header/Header";
 import Card from "../UI/Card/Card";
 import Profile from "../Profile/Profile";
@@ -11,6 +11,7 @@ const Dashboard = () => {
     const sentiments = [
         {name: 'Possitive', students: 400, fill: 'green' },
         {name: 'Negative', students: 700, fill: 'red' },
+        {name: "Neutral", students: 200, fill: "yellow"}
     ]
 
     const data = [
@@ -42,7 +43,63 @@ const Dashboard = () => {
           "negative": 3908
         }
       ]
+    const [insuranceData, setInsuranceData] = useState([
+        {name: 'Possitive', students: 1, fill: 'green' },
+        {name: 'Negative', students: 1, fill: 'red' },
+        {name: "Neutral", students: 1, fill: "yellow"}
+    ]);
+    const [chartData, setchartData] = useState(null);
+    const [collective, setCollective] = useState([
+        {name: 'Life Insurance', students: 0, fill: '#D61C4E' },
+        {name: 'Health Insurance', students: 0, fill: '#F77E21' },
+        {name: 'Automobile Insurance', students: 0, fill: '#FAC213' },
+        {name: 'Home Insurance', students: 0, fill: '#A64B2A' }
+    ])
+    const [lifeInsurance, setLifeInsurance] = useState(null);
+    const [healthInsurance, setHealthInsurance] = useState(null);
+    const [homeInsurance, setHomeInsurance] = useState(null);
+    const [carInsurance, setCarInsurance] = useState(null);
+    useEffect(()=>{
+        fetch("http://127.0.0.1:8000/api/getTwitterSentiments/life-insurance")
+        .then(res=>res.json())
+        .then(res=>{
+            setLifeInsurance(res);
+            setCollective([
+                ...collective,
+                collective[0].students = res.length
+            ]);
+        })
+        fetch("http://127.0.0.1:8000/api/getTwitterSentiments/health-insurance")
+        .then(res=>res.json())
+        .then(res=>{
+            setHealthInsurance(res)
+        setCollective([
+            ...collective,
+            collective[1].students = res.length
+        ])
+        
+    })
+    fetch("http://127.0.0.1:8000/api/getTwitterSentiments/insurance")
+    .then(res=>res.json())
+    .then(res=>{
+        setCarInsurance(res);
+        setCollective([
+            ...collective,
+            collective[2].students = res.length
+        ])
+        
+    })
+    fetch("http://127.0.0.1:8000/api/getTwitterSentiments/finance")
+    .then(res=>res.json())
+    .then(res=>{
+            setHomeInsurance(res)
+            setCollective([
+                ...collective,
+                collective[3].students = res.length
+            ])
+    }).then(()=>console.log(collective))
 
+    }, [collective])
 
     return (
         <div>
@@ -98,12 +155,12 @@ const Dashboard = () => {
                         </div>
                         <div>
                             <span className="block dashboard-heading__chart px-5 text-center">Insurance Distributions</span>
-                            <ResponsiveContainer width={700} height="80%">
+                            {collective &&<ResponsiveContainer width={700} height="80%">
                                 <PieChart width={500} height={500}>
                                     <Legend verticalAlign="bottom" align="center"/>
-                                    <Pie data={data} dataKey="students" outerRadius={250} fill="green"/>
+                                    <Pie data={collective} dataKey="students" outerRadius={250} fill="green"/>
                                 </PieChart>
-                            </ResponsiveContainer>
+                            </ResponsiveContainer>}
                         </div>
 
                     </div>
