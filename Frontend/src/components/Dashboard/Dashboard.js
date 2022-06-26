@@ -157,7 +157,7 @@ const Dashboard = () => {
                                 </div>
                                 {
                                     item ===0 && lifeInsuranceUsers && 
-                                    lifeInsuranceUsers.map(data=>(<Profile type="square" name={data.name}/>))
+                                    lifeInsuranceUsers.map(data=>(<Profile authorId={"1381371098193747974"} type="square" name={data.name}/>))
                                 }
                                 {
                                     item ===1 && healthInsuranceUsers && 

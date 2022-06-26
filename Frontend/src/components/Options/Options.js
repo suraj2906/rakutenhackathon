@@ -4,6 +4,7 @@ import Card from "../UI/Card/Card";
 import './Options.css';
 import Button from "../UI/Button/Button";
 import {CheckIcon, TicketIcon} from "@heroicons/react/outline";
+import { Link } from 'react-router-dom';
 
 const Options = () => {
     return (
@@ -11,7 +12,7 @@ const Options = () => {
             <Header/>
             <div className="flex justify-around options-main mt-12">
                 <div className="op-1">
-                    <a>
+                    <Link to="/verify">
                         <Card className="w-[80vh] py-10 px-[15%] text-center hover:bg-sky-200">
                         <span className="block text-left options-text">
                             Become an existing customer/influencer
@@ -25,10 +26,10 @@ const Options = () => {
                                 </ul>
                             </p>
                         </Card>
-                    </a>
+                    </Link>
                 </div>
                 <div className="op-2">
-                    <a>
+                    <Link to="/community">
                         <Card className="w-[80vh] py-10 px-[15%] text-center hover:bg-sky-200">
                         <span className="block text-left options-text">
                             Browse other Bajaj products
@@ -40,7 +41,7 @@ const Options = () => {
                                 </ul>
                             </p>
                         </Card>
-                    </a>
+                    </Link>
                 </div>
             </div>
         </>

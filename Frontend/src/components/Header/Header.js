@@ -1,5 +1,6 @@
 import React from 'react';
 import './Header.css';
+import { Link } from 'react-router-dom';
 import {AdjustmentsIcon, MenuAlt3Icon} from "@heroicons/react/outline";
 import {useAuthState} from "react-firebase-hooks/auth";
 import {auth, provider} from "../../firebase";
@@ -41,11 +42,11 @@ const Header = (props) => {
 
             <div className="flex space-x-4">
 
-                <Button><a href="/dashboard">Dashboard</a></Button>
-                <a href="/profile"><img className="h-10 w-10 profile__img rounded-full"
+                <Button><Link to="/dashboard">Dashboard</Link></Button>
+                <Link to="/profile"><img className="h-10 w-10 profile__img rounded-full"
                                         src="https://thumbs.dreamstime.com/b/rainbow-love-heart-background-red-wood-60045149.jpg"
                                         alt=""/>
-                </a>
+                </Link>
                 <MenuAlt3Icon className="h-9 text-[#741188] cursor-pointer lg:hidden"/>
 
             </div>

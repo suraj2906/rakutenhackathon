@@ -11,5 +11,7 @@ urlpatterns = [
 
     path("getLeaderboard/", views.getLeaderboard),
 
-    path("getUsers/<str:category>", views.getUsers)
+    path("getUsers/<str:category>", views.getUsers),
+
+    path("sendTweet/<int:id>", views.sendTweet)
 ]

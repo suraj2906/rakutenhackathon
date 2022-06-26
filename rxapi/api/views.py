@@ -8,6 +8,8 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 # from .reactor import getSentiments
 
+import tweepy
+import pandas as pd
 
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from textblob import TextBlob
@@ -85,6 +87,36 @@ def getTwitterUser(request, id):
     return JsonResponse(user.json()['includes']['users'][0], safe=False)
 
 
+def sendTweet(request, id):
+    consumer_key = 'nwU1wkyAOrnr4c7D3HnIIoMmC'
+    consumer_secret = 'ECftUMGtv5EvtMwz0mtUq0i73cffesUl4vuQ3ZTzBdP3KwXUBt'
+    access_token = '1540737761266659330-1NymUA5LtWexlcv1IwiliEpvnsPKxf'
+    access_token_secret = 'g69M0lOzmt9p6o6fIaHdkZax4PhclWxRrn2Ulv81z0zrs'
+
+    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+    auth.set_access_token(access_token, access_token_secret)
+    api = tweepy.API(auth, wait_on_rate_limit = True)
+
+    def profile_image(filename):
+        api.update_profile_image(filename)
+
+    #profile_image("D:\HACK_RX\ht.jpg")
+    # def update_profile_info(name, url, location, description):
+    #     api.update_profile(name, url, location, description)
+
+    #recipient_id ="AbhayAr14780082"
+    recipient_id=int(id)
+
+
+    # text to be sent
+    text = "Bajaj HackRx testing message"
+
+    # sending the direct message
+    direct_message = api.send_direct_message(recipient_id, text)
+
+    # printing the text of the sent direct message
+    print(direct_message.message_create['message_data']['text'])
+    return JsonResponse({"status": "success"})
 
 # ---------------------------------------------------------------------------- #
 #                                   User apis                                  #
@@ -308,7 +340,7 @@ def getSentimentResponse(request, category):
     data = response.json()
     # sentiments = getSentiments(data['data'])
     # print(sentiments)
-    print(data)
+    # print(data)
     return JsonResponse({"data":getSentiments(data['data']),
     "users": data['includes']['users']}, safe=False)
 

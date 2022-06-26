@@ -15,14 +15,14 @@ import Chat from "../Chat/Chat";
 import {PaperAirplaneIcon, PaperClipIcon} from "@heroicons/react/outline";
 import { useRef } from "react";
 import { addDoc, collection, query } from 'firebase/firestore/lite';
-import { doc, getDocs, onSnapshot } from 'firebase/firestore';
+import { doc, getDocs, onSnapshot, orderBy } from 'firebase/firestore';
 
 const Home = () => {
     // const [user] = useAuthState(auth);
     // // for displaying through firebase
     // const channelId = useSelector(selectChannelId);
     // const channelName = useSelector(selectChannelName);
-    const q = query(collection(db, "message/user1/user2"));
+    const q = query(collection(db, "message/user1/user2"), orderBy("createdAt"));
     const [message, setMessage] = useState("")
     const [messages, setMessages] = useState(null);
     const [profiles, setProfiles] = useState(null);
