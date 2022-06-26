@@ -61,20 +61,19 @@ def getRecentTweets(request, category):
         'query': str(category), 
         'max_results': 50, 
         'start_time': recent.strftime('%Y-%m-%dT%H:%M:%S.000Z'),
-        'user.fields':"name",
         "expansions": "author_id",
-        "user.fields": "created_at,description,entities,id,location,name,profile_image_url,protected,public_metrics,url,username"
+        'user.fields': 'name,username,public_metrics'
     }
     tweets = requests.get("https://api.twitter.com/2/tweets/search/recent", headers=headers, params=payload)
     # print(tweets)
     database.child("twitter").child(str(recent.strftime("%H%m%S%d%m%y"))).set(tweets.json())
     data = tweets.json()["data"]
-    # print(data)
+    # print(tweets.json())
     # text_data = []
     # for i in range(len(data)):
     #     text = data[i]["text"]
     #     text_data.append(text)
-    return JsonResponse(data, safe=False)
+    return JsonResponse(tweets.json(), safe=False)
 
 
 def getTwitterUser(request, id):
@@ -309,9 +308,11 @@ def getSentimentResponse(request, category):
     url = "http://localhost:8000/api/getTweets/"+category
     response = requests.get(url)
     data = response.json()
-    sentiments = getSentiments(data)
-    print(sentiments)
-    return JsonResponse(getSentiments(data), safe=False)
+    # sentiments = getSentiments(data['data'])
+    # print(sentiments)
+    print(data)
+    return JsonResponse({"data":getSentiments(data['data']),
+    "users": data['includes']['users']}, safe=False)
 
 
 # ---------------------------------------------------------------------------- #
