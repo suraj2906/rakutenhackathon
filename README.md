@@ -1,8 +1,90 @@
-# PS8_Realtime_Terror
 
-## Harness Social Media/Public Platforms To Source Qualified Leads
+# Harness Social Media/Public Platforms To Source Qualified Leads
 
 Open platforms like Twitter, FB, Mouth shut, Quora etc are considered to be neutral platforms where people share their experience about products, services and brands. The objective is to harness these platforms to identify and generate leads and prospects by applying website scrapping, text analytics, AI and push filtered data to Analytics engine for further processing.
-![WhatsApp Image 2022-06-26 at 10 04 50 AM](https://user-images.githubusercontent.com/72390265/175799646-a408be2b-838d-4ecb-8998-5fe587872772.jpeg)
-![WhatsApp Image 2022-06-26 at 10 04 27 AM](https://user-images.githubusercontent.com/72390265/175799647-8aaa5562-2af6-402d-8aeb-526c05b320f7.jpeg)
-![WhatsApp Image 2022-06-26 at 10 04 26 AM](https://user-images.githubusercontent.com/72390265/175799648-841b3471-7a1e-432a-974c-e58cbad8a1fb.jpeg)
+
+
+## TABLE OF CONTENTS
+## OUR SOLUTION
+
+==> Our web application gives users the chance to join a community that uses customer collaboration to promote brands,
+suggest products, and offer a forum for direct dialogue between influencers and interested parties.
+
+==> The interested parties can take advantage of a variety of benefits, including speaking with existing customers or influencers, 
+learning in-depth about the product of interest, getting any queries resolved, and receiving the best quote on any insurance 
+Bajaj Allianz offers in all markets.
+
+==> Existing customers have the opportunity to become influencers on our website. 
+We have a special influencer programme that is essentially an incentive-based points-reward system, 
+wherein the influencer will receive a certain number of points for each interested party
+that they convert into a customer as well as for performing product digital marketing activities, among other things. 
+These points will qualify you for incentives like cash, Amazon gift cards, and other goods.
+## Tech Stack
+
+**Front-End:** HTML, Tailwind CSS, React JS
+
+
+**Back-End:** Django, Firebase
+
+**Web_Scrapping:** Selenium, Beautiful Soup
+
+**Sentiment_Analysis:** HuggingFace Python Library - Bert Model
+
+**Twitter_Bot:** TweePy Library
+
+**Chat_Bot:** PyTorch, Vader.sentiment Library
+
+## Installation
+
+Install my-project with npm
+
+```bash
+  npm install my-project
+  cd my-project
+```
+    
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://link-to-project
+```
+
+Go to the project directory
+
+```bash
+  cd my-project
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run start
+```
+
+
+## Screenshots
+
+![App Screenshot]()
+
+
+## Authors
+
+- [@Shivam Akhouri](https://github.com/shivam-akhouri)
+- [@Abhay Arora](https://github.com/SPAbhay)
+- [@Yash Bhootda](https://github.com/yrb1)
+- [@Aniket Kulkarni](https://github.com/anikul165)
+- [@Neha Ragesh Nambiar](https://github.com/NehRagNam)
+
+
+## Future Recommendations
+- to scrap more website such as instagram and insurance dekho to generate and identify leads
+- to set up the UTM link wherin using google analytics, one can see the engagement in the community
+- better rewards and incentive mechanisms can be developed
