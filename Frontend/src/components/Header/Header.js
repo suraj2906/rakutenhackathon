@@ -25,7 +25,7 @@ const Header = () => {
     };
 
     return (
-            <header className="flex bg-[#DCF9FD] items-center justify-between py-4 px-6 mb-1 w-screen">
+            <header className="flex bg-[#DCF9FD] items-center justify-between py-4 px-6 mb-1 w-screen sticky">
             <a href="/">
                 <img
                     src={require("../Assets/MetaData.png")}
