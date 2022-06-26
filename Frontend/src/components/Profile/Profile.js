@@ -8,9 +8,9 @@ import {setChannelInfo} from "../../features/channelSlice";
 const Profile = ({id, name}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const setChannel=() =>{
+    const setChannel = () => {
         dispatch(setChannelInfo({
-            channelId:id,
+            channelId: id,
             channelName: name,
         }))
         navigate(`/channels/${id}`)
@@ -18,7 +18,8 @@ const Profile = ({id, name}) => {
 
     return (
         <div
-            className='profile__container flex align-middle px-6 py-3 scrollbar-hide min-h-[1rem] cursor-pointer overflow-hidden transition-all ease-out duration-200' onClick={setChannel}
+            className='profile__container flex align-middle px-6 py-3 scrollbar-hide min-h-[1rem] cursor-pointer overflow-hidden transition-all ease-out duration-200'
+            onClick={setChannel}
         >
             {/*<img className={`${type} h-10 w-10 profile__img`}*/}
             {/*     src="https://thumbs.dreamstime.com/b/rainbow-love-heart-background-red-wood-60045149.jpg" alt=""/>*/}
@@ -26,8 +27,8 @@ const Profile = ({id, name}) => {
 
             <div className="main">
                 <div className="flex flex-row">
-                <div className="d1">🧬</div>
-                <div className="d1">🩺</div>
+                    <div className="d1">🧬</div>
+                    <div className="d1">🩺</div>
                 </div>
                 <div className="flex flex-row">
                     <div className="d1">🚗</div>
