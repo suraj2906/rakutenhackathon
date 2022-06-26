@@ -23,7 +23,6 @@ These points will qualify you for incentives like cash, Amazon gift cards, and o
 
 **Front-End:** HTML, Tailwind CSS, React JS
 
-
 **Back-End:** Django, Firebase
 
 **Web_Scrapping:** Selenium, Beautiful Soup
@@ -33,6 +32,29 @@ These points will qualify you for incentives like cash, Amazon gift cards, and o
 **Twitter_Bot:** TweePy Library
 
 **Chat_Bot:** PyTorch, Vader.sentiment Library
+
+### ReactJS
+- Landing Page
+- Login/Signup page
+- Community page
+- Leaderboard page
+- Chat scheduler
+- Profile page
+- Verification Page
+
+### Django
+- Sentiment Analysis
+- Mouthshut Web Scrapper
+- Twitter Web Scrapper
+
+### HTML and Tailwind CSS
+- Structuring and designing the webpages
+- Cards on community page
+
+### REST API
+- Scrapping Mouthshut
+- Scrapping Twitter
+- Structuring data
 
 ## Installation
 
