@@ -140,10 +140,8 @@ def storeUser(request):
     })
 
 @csrf_exempt
-def getUserDetails(request):
-    if request.method == "POST":
-        data = json.loads(request.body)
-        username = data.get("username")
+def getUserDetails(request,username):
+    if request.method == "GET":
         user = database.child("users").child(username).get()
         return JsonResponse(user.val(), safe=False)
 
