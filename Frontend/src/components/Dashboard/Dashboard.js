@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from "../Header/Header";
 import Card from "../UI/Card/Card";
 import Profile from "../Profile/Profile";
@@ -21,8 +21,9 @@ import {
 
 const Dashboard = () => {
     const sentiments = [
-        {name: 'Possitive', students: 400, fill: 'green'},
-        {name: 'Negative', students: 700, fill: 'red'},
+        {name: 'Possitive', students: 400, fill: 'green' },
+        {name: 'Negative', students: 700, fill: 'red' },
+        {name: "Neutral", students: 200, fill: "yellow"}
     ]
 
     const data = [
@@ -53,8 +54,74 @@ const Dashboard = () => {
             "possitive": 2780,
             "negative": 3908
         }
-    ]
+      ]
+    const [insuranceData, setInsuranceData] = useState([
+        {name: 'Possitive', students: 1, fill: 'green' },
+        {name: 'Negative', students: 1, fill: 'red' },
+        {name: "Neutral", students: 1, fill: "yellow"}
+    ]);
+    const [chartData, setchartData] = useState(null);
+    const [collective, setCollective] = useState([
+        {name: 'Life Insurance', students: 0, fill: '#D61C4E' },
+        {name: 'Health Insurance', students: 0, fill: '#F77E21' },
+        {name: 'Automobile Insurance', students: 0, fill: '#FAC213' },
+        {name: 'Home Insurance', students: 0, fill: '#A64B2A' }
+    ])
+    const [lifeInsurance, setLifeInsurance] = useState(null);
+    const [healthInsurance, setHealthInsurance] = useState(null);
+    const [homeInsurance, setHomeInsurance] = useState(null);
+    const [carInsurance, setCarInsurance] = useState(null);
+    const [lifeInsuranceUsers, setLifeInsuranceUsers] = useState(null);
+    const [healthInsuranceUsers, setHealthInsuranceUsers] = useState(null);
+    const [carInsuranceUsers, setCarInsuranceUsers] = useState(null);
+    const [homeInsuranceUsers, setHomeInsuranceUsers] = useState(null);
+    const [item, setItem] = useState(0);
+    useEffect(()=>{
+        fetch("http://127.0.0.1:8000/api/getTwitterSentiments/life-insurance")
+        .then(res=>res.json())
+        .then(res=>{
+            setLifeInsurance(res['data']);
+            setLifeInsuranceUsers(res['users']);
+            setCollective([
+                ...collective,
+                collective[0].students = res['data'].length
+            ]);
+        })
+        // .then(life)
+        fetch("http://127.0.0.1:8000/api/getTwitterSentiments/health-insurance")
+        .then(res=>res.json())
+        .then(res=>{
+            setHealthInsurance(res['data'])
+            setHealthInsuranceUsers(res['users']);
+            setCollective([
+                ...collective,
+                collective[1].students = res['data'].length
+            ])
+            
+    })
+    fetch("http://127.0.0.1:8000/api/getTwitterSentiments/insurance")
+    .then(res=>res.json())
+    .then(res=>{
+        setCarInsurance(res['data']);
+        setCarInsuranceUsers(res['users']);
+        setCollective([
+            ...collective,
+            collective[2].students = res['data'].length
+        ])
+        
+    })
+    fetch("http://127.0.0.1:8000/api/getTwitterSentiments/finance")
+    .then(res=>res.json())
+    .then(res=>{
+            setHomeInsurance(res['data'])
+            setHomeInsuranceUsers(res['users']);
+            setCollective([
+                ...collective,
+                collective[3].students = res['data'].length
+            ])
+    }).then(()=>console.log(collective))
 
+    }, [collective])
 
     return (
         <div>
@@ -71,47 +138,39 @@ const Dashboard = () => {
                             <hr/>
                             <div className="h-[68vh] flex-grow overflow-y-scroll">
                                 <div className="flex justify-center">
-                                    <div className="toggle-button">
+                                    <button className="toggle-button" onClick={()=>setItem(0)}>
                                         <a href="#" title="Header" data-toggle="popover" data-placement="top"
                                            data-content="Content">🧬</a>
-                                    </div>
-                                    <div className="toggle-button">
+                                    </button>
+                                    <button className="toggle-button" onClick={()=>setItem(1)}>
                                     <a href="#" title="Header" data-toggle="popover" data-placement="bottom"
                                        data-content="Content">🩺</a>
-                                    </div>
-                                    <div className="toggle-button">
+                                    </button>
+                                    <button className="toggle-button" onClick={()=>setItem(2)}>
                                     <a href="#" title="Header" data-toggle="popover" data-placement="left"
                                        data-content="Content">🚗</a>
-                                    </div>
-                                    <div className="toggle-button">
+                                    </button>
+                                    <button className="toggle-button" onClick={()=>setItem(3)}>
                                     <a href="#" title="Header" data-toggle="popover" data-placement="right"
                                        data-content="Content">🏚️</a>
-                                    </div>
+                                    </button>
                                 </div>
-                                <Profile type="square" name="dude 1"/>
-                                <Profile type="square" name="dude 2"/>
-                                <Profile type="square" name="dude 3"/>
-                                <Profile type="square" name="dude 4"/>
-                                <Profile type="square" name="dude 5"/>
-                                <Profile type="square" name="dude 6"/>
-                                <Profile type="square" name="dude 7"/>
-                                <Profile type="square" name="dude 8"/>
-                                <Profile type="square" name="dude 9"/>
-                                <Profile type="square" name="dude 10"/>
-                                <Profile type="square" name="dude 11"/>
-                                <Profile type="square" name="dude 12"/>
-                                <Profile type="square" name="dude 13"/>
-                                <Profile type="square" name="dude 14"/>
-                                <Profile type="square" name="dude 15"/>
-                                <Profile type="square" name="dude 16"/>
-                                <Profile type="square" name="dude 17"/>
-                                <Profile type="square" name="dude 18"/>
-                                <Profile type="square" name="dude 19"/>
-                                <Profile type="square" name="dude 20"/>
-                                <Profile type="square" name="dude 21"/>
-                                <Profile type="square" name="dude 22"/>
-                                <Profile type="square" name="dude 23"/>
-                                <Profile type="square" name="dude 24"/>
+                                {
+                                    item ===0 && lifeInsuranceUsers && 
+                                    lifeInsuranceUsers.map(data=>(<Profile type="square" name={data.name}/>))
+                                }
+                                {
+                                    item ===1 && healthInsuranceUsers && 
+                                    healthInsuranceUsers.map(data=>(<Profile type="square" name={data.name}/>))
+                                }
+                                {
+                                    item ===2 && carInsuranceUsers && 
+                                    carInsuranceUsers.map(data=>(<Profile type="square" name={data.name}/>))
+                                }
+                                {
+                                    item ===3 && homeInsuranceUsers && 
+                                    homeInsuranceUsers.map(data=>(<Profile type="square" name={data.name}/>))
+                                }
                             </div>
                         </Card>
                     </div>
@@ -133,7 +192,7 @@ const Dashboard = () => {
                             <ResponsiveContainer width={700} height="80%">
                                 <PieChart width={500} height={500}>
                                     <Legend verticalAlign="bottom" align="center"/>
-                                    <Pie data={data} dataKey="students" outerRadius={250} fill="green"/>
+                                    <Pie data={collective} dataKey="students" outerRadius={250} fill="green"/>
                                 </PieChart>
                             </ResponsiveContainer>
                         </div>
@@ -143,7 +202,7 @@ const Dashboard = () => {
 
 
             </div>
-            <div className="block flex flex-grow px-5 justify-evenly my-5 ">
+            <div className="flex flex-grow px-5 justify-evenly bg-[#B9E5FF]">
 
                 <div>
                     <span className="block dashboard-heading__chart px-5 text-center">Segregagted Sentiments</span>
