@@ -1,7 +1,4 @@
-.login-page{
-    background: linear-gradient(180deg, #E0FBFC 0%, #B9E5FF 100%);
-    backdrop-filter: blur(40px);
-}
+
 
 .login-heading{
     font-family: 'Rakkas';
@@ -17,9 +14,7 @@
     background: linear-gradient(122.89deg, rgba(255, 255, 255, 0.8) -26%, rgba(196, 196, 196, 0.7) 140.85%, rgba(0, 0, 0, 0.8) 140.85%);
     opacity: 0.5;
     backdrop-filter: blur(60px);
-    /* Note: backdrop-filter has minimal browser support */
 
-    border-radius: 7px;
 }
 
 

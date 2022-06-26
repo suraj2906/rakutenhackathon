@@ -15,6 +15,7 @@ import VerificationPage from "./components/VerificationPage/VerificationPage";
 import Options from "./components/Options/Options";
 import Dashboard from "./components/Dashboard/Dashboard";
 import PersonalChat from "./components/PersonalChat/PersonalChat";
+import ProfilePage from "./components/ProfilePage/ProfilePage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -31,6 +32,7 @@ root.render(
         <Route exact path="/options" element={<Options />} />
         <Route exact path="/dashboard" element={<Dashboard />} />
         <Route exact path="/dm" element={<PersonalChat />} />
+        <Route exact path="/profile" element={<ProfilePage />} />
         <Route exact path="/channels/:id" element={<Home />} />
       </Routes>
     </Provider>
