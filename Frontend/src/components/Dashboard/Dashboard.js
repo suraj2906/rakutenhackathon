@@ -5,43 +5,55 @@ import Profile from "../Profile/Profile";
 import Banner from "../UI/Banner/Banner";
 import {PaperAirplaneIcon, PaperClipIcon} from "@heroicons/react/outline";
 import './Dashboard.css';
-import {PieChart, Pie, Legend, ResponsiveContainer,BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Bar, Cell} from "recharts";
+import {
+    PieChart,
+    Pie,
+    Legend,
+    ResponsiveContainer,
+    BarChart,
+    CartesianGrid,
+    XAxis,
+    YAxis,
+    Tooltip,
+    Bar,
+    Cell
+} from "recharts";
 
 const Dashboard = () => {
     const sentiments = [
-        {name: 'Possitive', students: 400, fill: 'green' },
-        {name: 'Negative', students: 700, fill: 'red' },
+        {name: 'Possitive', students: 400, fill: 'green'},
+        {name: 'Negative', students: 700, fill: 'red'},
     ]
 
     const data = [
-        {name: 'Life Insurance', students: 400, fill: '#D61C4E' },
-        {name: 'Health Insurance', students: 700, fill: '#F77E21' },
-        {name: 'Automobile Insurance', students: 200, fill: '#FAC213' },
-        {name: 'Home Insurance', students: 1000, fill: '#A64B2A' }
+        {name: 'Life Insurance', students: 400, fill: '#D61C4E'},
+        {name: 'Health Insurance', students: 700, fill: '#F77E21'},
+        {name: 'Automobile Insurance', students: 200, fill: '#FAC213'},
+        {name: 'Home Insurance', students: 1000, fill: '#A64B2A'}
     ];
 
     const segregatedData = [
         {
-          "name": "Life Insurance",
-          "possitive": 4000,
-          "negative": 2400
+            "name": "Life Insurance",
+            "possitive": 4000,
+            "negative": 2400
         },
         {
-          "name": "Home Insurance",
-          "possitive": 3000,
-          "negative": 1398
+            "name": "Home Insurance",
+            "possitive": 3000,
+            "negative": 1398
         },
         {
-          "name": "Automobile Insurance",
-          "possitive": 2000,
-          "negative": 9800
+            "name": "Automobile Insurance",
+            "possitive": 2000,
+            "negative": 9800
         },
         {
-          "name": "Health Insurance",
-          "possitive": 2780,
-          "negative": 3908
+            "name": "Health Insurance",
+            "possitive": 2780,
+            "negative": 3908
         }
-      ]
+    ]
 
 
     return (
@@ -58,6 +70,24 @@ const Dashboard = () => {
                             </span>
                             <hr/>
                             <div className="h-[68vh] flex-grow overflow-y-scroll">
+                                <div className="flex justify-center">
+                                    <div className="toggle-button">
+                                        <a href="#" title="Header" data-toggle="popover" data-placement="top"
+                                           data-content="Content">🧬</a>
+                                    </div>
+                                    <div className="toggle-button">
+                                    <a href="#" title="Header" data-toggle="popover" data-placement="bottom"
+                                       data-content="Content">🩺</a>
+                                    </div>
+                                    <div className="toggle-button">
+                                    <a href="#" title="Header" data-toggle="popover" data-placement="left"
+                                       data-content="Content">🚗</a>
+                                    </div>
+                                    <div className="toggle-button">
+                                    <a href="#" title="Header" data-toggle="popover" data-placement="right"
+                                       data-content="Content">🏚️</a>
+                                    </div>
+                                </div>
                                 <Profile type="square" name="dude 1"/>
                                 <Profile type="square" name="dude 2"/>
                                 <Profile type="square" name="dude 3"/>
@@ -88,7 +118,8 @@ const Dashboard = () => {
                     <div className="block flex flex-grow px-5 justify-evenly my-5 ">
 
                         <div>
-                            <span className="block dashboard-heading__chart px-5 text-center">Insurance Sentiments</span>
+                            <span
+                                className="block dashboard-heading__chart px-5 text-center">Insurance Sentiments</span>
                             <ResponsiveContainer width={700} height="80%">
                                 <PieChart width={500} height={500}>
                                     <Legend verticalAlign="bottom" align="center"/>
@@ -97,7 +128,8 @@ const Dashboard = () => {
                             </ResponsiveContainer>
                         </div>
                         <div>
-                            <span className="block dashboard-heading__chart px-5 text-center">Insurance Distributions</span>
+                            <span
+                                className="block dashboard-heading__chart px-5 text-center">Insurance Distributions</span>
                             <ResponsiveContainer width={700} height="80%">
                                 <PieChart width={500} height={500}>
                                     <Legend verticalAlign="bottom" align="center"/>
@@ -111,21 +143,21 @@ const Dashboard = () => {
 
 
             </div>
-                    <div className="block flex flex-grow px-5 justify-evenly my-5 ">
+            <div className="block flex flex-grow px-5 justify-evenly my-5 ">
 
-                        <div>
-                            <span className="block dashboard-heading__chart px-5 text-center">Segregagted Sentiments</span>
-                            <BarChart width={1200} height={500} data={segregatedData}>
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis dataKey="name" />
-                                <YAxis />
-                                <Tooltip />
-                                <Legend />
-                                <Bar dataKey="negative" fill="#F15412" />
-                                <Bar dataKey="possitive" fill="#A0D995" />
-                            </BarChart>
-                        </div>
-                    </div>
+                <div>
+                    <span className="block dashboard-heading__chart px-5 text-center">Segregagted Sentiments</span>
+                    <BarChart width={1200} height={500} data={segregatedData}>
+                        <CartesianGrid strokeDasharray="3 3"/>
+                        <XAxis dataKey="name"/>
+                        <YAxis/>
+                        <Tooltip/>
+                        <Legend/>
+                        <Bar dataKey="negative" fill="#F15412"/>
+                        <Bar dataKey="possitive" fill="#A0D995"/>
+                    </BarChart>
+                </div>
+            </div>
         </div>
     );
 };

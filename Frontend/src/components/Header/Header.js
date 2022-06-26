@@ -35,8 +35,8 @@ const Header = () => {
             </a>
             <div className="hidden flex lg:flex space-x-6">
                 <a href="/" className="navbar__link">Home</a>
-                <a href="/" className="navbar__link">Community</a>
-                <a href="/" className="navbar__link">Contact</a>
+                <a href="/community" className="navbar__link">Community</a>
+                <a href="/contact" className="navbar__link">Contact</a>
             </div>
             <div className="flex space-x-4">
                 <button
