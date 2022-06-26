@@ -8,13 +8,7 @@ const Banner = (props) => {
 
             <div className="text-center text-white">
                 <span className="heading__banner">{props.heading}</span>
-                <p className="description__banner mt-6 mx-12 text-center">Instructions & Short Description about the circle- Lorem ipsum dolor
-                    sit amet, consectetur adipiscing elit. In est dolor, tempus nec augue nec, mattis venenatis mauris.
-                    Aliquam erat volutpat. Nam eget velit eget leo porta facilisis. Vivamus bibendum diam lorem.
-                    Phasellus justo nisl, faucibus et neque vitae, auctor ullamcorper dui. Fusce tempor tellus ipsum, id
-                    hendrerit justo ultricies nec. Nunc vitae massa vitae leo lacinia commodo. Cras id malesuada neque,
-                    sit amet ornare eros. Integer auctor ipsum mi, eu venenatis tellus congue in. Duis dapibus nulla sed
-                    urna vulputate, id vehicula orci congue.</p>
+                <p className="description__banner mt-6 mx-12 text-center">Health insurance or medical insurance (also known as medical aid in South Africa) is a type of insurance that covers the whole or a part of the risk of a person incurring medical expenses. As with other types of insurance is risk among many individuals. By estimating the overall risk of health risk and health system expenses over the risk pool, an insurer can develop a routine finance structure, such as a monthly premium or payroll tax, to provide the money to pay for the health care benefits specified in the insurance agreement.[1] The benefit is administered by a central organization, such as a government agency, private business, or not-for-profit entity.</p>
             </div>
         </div>
     );

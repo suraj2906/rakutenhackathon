@@ -109,7 +109,7 @@ def sendTweet(request, id):
 
 
     # text to be sent
-    text = "Bajaj HackRx testing message"
+    text = "Hello!, We would like to invite you to our website! www.bajajallianz.com"
 
     # sending the direct message
     direct_message = api.send_direct_message(recipient_id, text)

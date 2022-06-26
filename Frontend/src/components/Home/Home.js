@@ -99,7 +99,7 @@ const Home = () => {
 
                         <Card className="absolute card flex flex-col overflow-y-auto pb-6 h-[88vh]">
 
-                            <Banner heading="Circle 1"/>
+                            <Banner heading="Home Insurance"/>
 
                                 <div
                                     className="sticky top-5 bottom-20 chat__input-section flex items-center p-2.5 mx-8
