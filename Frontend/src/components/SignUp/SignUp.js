@@ -3,9 +3,10 @@ import Card from "../UI/Card/Card";
 import Button from "../UI/Button/Button";
 import './SignUp.css'
 import axios from 'axios';
+import {useNavigate} from "react-router-dom";
 
 const SignUp = () => {
-
+    const navigate = useNavigate();
     const [userdetails, setUserDetails] = useState({
         "first_name": "",
         "last_name": "",
@@ -24,7 +25,7 @@ const SignUp = () => {
                 "finance", "loans"
             ]
         })
-        }).then(res=>console.log(res.status))
+        }).then(res=>console.log(res.status)).then(()=>navigate("/options"))
     }
 
     return (
