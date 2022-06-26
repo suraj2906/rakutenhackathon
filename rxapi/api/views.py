@@ -25,6 +25,7 @@ def getSentiments(dataList):
             sentiment_dict['sentiment'] = "negative"
         else:
             sentiment_dict['sentiment'] = "neutral"
+        sentiment_dict['author_id'] = data['author_id']
         answers.append(sentiment_dict)
     return answers
 # Create your views here.
