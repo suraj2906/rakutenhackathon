@@ -6,6 +6,7 @@ import {auth, provider} from "../../firebase";
 import {useNavigate} from "react-router-dom";
 
 import {signInWithPopup} from 'firebase/auth';
+import Button from "../UI/Button/Button";
 
 const Header = (props) => {
     const [user] = useAuthState(auth);
@@ -35,9 +36,12 @@ const Header = (props) => {
             <div className="hidden flex lg:flex space-x-6">
                 <a href="/" className="navbar__link">Home</a>
                 <a href="/community" className="navbar__link">Community</a>
+
             </div>
+
             <div className="flex space-x-4">
 
+                <Button><a href="/dashboard">Dashboard</a></Button>
                 <a href="/profile"><img className="h-10 w-10 profile__img rounded-full"
                                         src="https://thumbs.dreamstime.com/b/rainbow-love-heart-background-red-wood-60045149.jpg"
                                         alt=""/>
