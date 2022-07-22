@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Home.css';
 import {auth, db} from "../../firebase";
 import {Navigate} from "react-router-dom";
@@ -16,6 +17,8 @@ import {PaperAirplaneIcon, PaperClipIcon} from "@heroicons/react/outline";
 import { useRef } from "react";
 import { addDoc, collection, query } from 'firebase/firestore/lite';
 import { doc, getDocs, onSnapshot, orderBy } from 'firebase/firestore';
+import { ChatBot } from '../UI/ChatBot/ChatBot';
+import Button from '../UI/Button/Button'
 
 const Home = () => {
     // const [user] = useAuthState(auth);
@@ -123,11 +126,13 @@ const Home = () => {
                                         <Chat text={text} isUser={"user1" == sender}/>
                                 ))}
                             </div>
+                           
                         </Card>
+                       
                     </div>
                 </div>
-
-
+                
+                
             </div>
         </>
     );
