@@ -104,6 +104,7 @@ Start the server
 ## Authors
 
 - [@Shivam Akhouri](https://github.com/shivam-akhouri)
+- [@Suraj Shah](https://github.com/suraj2906)
 - [@Abhay Arora](https://github.com/SPAbhay)
 - [@Yash Bhootda](https://github.com/yrb1)
 - [@Aniket Kulkarni](https://github.com/anikul165)
